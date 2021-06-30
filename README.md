@@ -24,21 +24,21 @@ python3 main.py
 ## Features
 * Search and rent books
 
-![](../images/l1.png)
+![](images/l1.png)
 
 * Issue book returns from members
 
-![](../images/l2.png)
+![](images/l2.png)
 
 * Add and remove members
 
-![](../images/l3.png)
+![](images/l3.png)
 
 * Make transactions
 
-![](../images/l4.png)
+![](images/l4.png)
 
 * Reports
 
-![](../images/l5.png)
-![](../images/l6.png)
+![](images/l5.png)
+![](images/l6.png)
