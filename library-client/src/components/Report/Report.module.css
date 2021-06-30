@@ -1,0 +1,14 @@
+.tableHeaders {
+    color: var(--frostSkyBlue);
+    background-color: var(--secondaryColor);
+}
+
+.leftAlign {
+    text-align: left;
+}
+
+.title {
+    text-align: center;
+    font-size: 26px;
+    color: var(--mainColor)
+}

@@ -1,0 +1,35 @@
+.header {
+    position: absolute;
+    top: 0;
+    width: 100vw;
+    background-color: var(--mainColor);
+    height: 75px;
+}
+
+.render_bottom {
+    position: absolute;
+    top: 10%;
+    left: 50%;
+    transform: translate(-50%);
+    margin: 0px auto;
+    /* text-align: center; */
+}
+
+.nav {
+    margin: auto;
+    padding-top: 20px;
+    height: fit-content;
+    width: fit-content;
+}
+
+.links {
+    text-decoration: none;
+    color: var(--snowStorm);
+    margin: 0 10px;
+    font-family: 'Ubuntu';
+    font-size: 18px;
+}
+
+.links:focus {
+    color: var(--frostSkyBlue);
+}

@@ -1,0 +1,30 @@
+.title {
+    font-size: 22px;
+    color: var(--mainColor);
+    text-align: center;
+}
+
+.returnBtn {
+    background-color: var(--auroraGreen);
+    color: var(--snowStorm);
+    border: none;
+    border-radius: 5px;
+    outline: none;
+    font-size: 16px;
+    height: 35px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    user-select: none;
+    
+}
+
+.returnBtn:hover {
+    user-select: none;
+    box-shadow: 0px 2px 5px var(--auroraGreen);
+}
+
+.disabledBtn {
+    background-color: var(--frostDeepBlue);
+    color: var(--snowStorm);
+    opacity: 0.5;
+}

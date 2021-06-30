@@ -1,0 +1,25 @@
+td {
+    text-align: center;
+    margin: 20px;
+    padding: 10px;
+    font-size: 16px;
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: 0px 5px 5px var(--snowStormShadow);
+}
+
+.removeBtn {
+    background-color: var(--auroraRed);
+    color: var(--snowStorm);
+    border: none;
+    border-radius: 5px;
+    outline: none;
+    font-size: 16px;
+    height: 35px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.removeBtn:hover {
+    box-shadow: 0px 2px 5px var(--auroraRed);
+}

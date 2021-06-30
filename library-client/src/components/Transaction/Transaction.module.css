@@ -1,0 +1,14 @@
+.transactionForm {
+    display: flex;
+    justify-content: center;
+}
+
+.transactionInputs {
+    display: flex;
+    flex-direction: column;
+}
+
+.transactionForm input {
+    margin: 0px 10px;
+    width: 120px;
+}

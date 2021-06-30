@@ -1,0 +1,22 @@
+:root {
+    /* colors */
+    --mainColor: #3B4252;
+    --secondaryColor: #4C566A;
+    --frostGreen: #8FBCBB;
+    --buttonColor: #79B8CA;
+    
+    --frostDeepBlue: #5E81AC;
+    --frostSkyBlue: #88C0D0;
+    --snowStorm: #ECEFF4;
+    --snowStormShadow: #D8DEE9;
+
+    --auroraRed: #BF616A;
+    --auroraOrange: #D08770;
+    --auroraYellow: #EBCB8B;
+    --auroraGreen: #A3BE8C;
+    --auroraPink: #B48EAD;
+}
+
+html {
+    background: #F8F9FB;
+}

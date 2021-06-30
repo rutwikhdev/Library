@@ -1,0 +1,78 @@
+.backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: 10;
+    background: rgba(0, 0, 0, 0.75);
+}
+
+.modal {
+  position: fixed;
+  top: 30vh;
+  left: 10%;
+  width: 80%;
+  background-color: white;
+  z-index: 100;
+  overflow: hidden;
+  border-radius: 5px;
+}
+
+.header {
+  background: var(--mainColor);
+  padding: 1rem;
+}
+
+.header h4 {
+  margin: 0;
+  color: white;
+}
+
+.content {
+  padding: 1rem;
+}
+
+.content p {
+  font-size: 20px;
+}
+
+.input {
+  height: 30px;
+  font-size: 16px;
+}
+
+.actions {
+  padding: 1rem;
+  display: flex;
+  justify-content: flex-end;
+}
+
+@media (min-width: 768px) {
+  .modal {
+    left: calc(50% - 20rem);
+    width: 40rem;
+  }
+}
+
+.card {
+    background-color: white;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+    border-radius: 10px;
+}
+
+.button {
+    font: inherit;
+    border: none;
+    background: var(--mainColor);
+    color: var(--frostSkyBlue);
+    padding: 0.25rem 1rem;
+    cursor: pointer;
+    height: 40px;
+    border-radius: 5px;
+}
+  
+.button:hover,
+.button:active {
+    background: var(--secondaryColor);
+}
