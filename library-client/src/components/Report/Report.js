@@ -1,9 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import jsPDF from 'jspdf';
-import * as htmlToImage from 'html-to-image';
-import { toPng, toJpeg, toBlob, toPixelData, toSvg } from 'html-to-image';
-import download from 'downloadjs';
+import { toJpeg } from 'html-to-image';
 
 import Chart from './Chart/Chart';
 import classes from './Report.module.css';
@@ -24,19 +22,13 @@ const Report = () => {
 
     // download pdf or jpeg of reports
     const downloadReports = () => {
-        htmlToImage.toJpeg(document.getElementById('capture'), { quality: 0.95,backgroundColor: 'white' })
+        toJpeg(document.getElementById('capture'), { quality: 0.95,backgroundColor: 'white' })
             .then(function (dataUrl) {
                 var link = document.createElement('a');
                 link.download = 'my-image-name.jpeg';
                 const pdf = new jsPDF();
 
-                const imgProps= pdf.getImageProperties(dataUrl);
-                const pdfWidth = pdf.internal.pageSize.getWidth();
-                const pdfHeight = (imgProps.height * pdfWidth) / imgProps.width;
-
-                //download(dataUrl, 'repots.jpeg');
-                //pdf.addImage(dataUrl, 'JPEG', 0, 0,pdfWidth, pdfHeight);
-                pdf.addImage(dataUrl, 'JPEG', 30, 0, 150, 300)
+                pdf.addImage(dataUrl, 'JPEG', 30, 0, 150, 300) // x, y, width, height
                 pdf.save("reports.pdf");
             });
     }
