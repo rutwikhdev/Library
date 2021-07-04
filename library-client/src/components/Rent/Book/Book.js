@@ -42,6 +42,7 @@ const Book = (props) => {
             memberID: memberId
         }).then(res => {
             console.log(res);
+            // reduce book quantity form state
         }).catch(err => {
             console.log(err);
             alert('Outstanding balance too high or already rented.');

@@ -4,6 +4,7 @@ import uuid
 import json
 
 from .models.members import Members
+from .models.rentals import Rentals
 
 members_view = Blueprint('members_view', __name__)
 CORS(members_view)
@@ -27,16 +28,38 @@ def add_member():
 @members_view.route('/remove_member', methods=['POST'])
 def remove_member():
     """
-    DELETE a member from db
+    DELETE a member from db if,
+    1. No outstanding balance
+    2. Returned all rented books
     return: status
     """
     data = json.loads(request.data)
+    status = True
 
     members = Members()
-    members.remove_member(data['id'])
-    members.close()
+    debt = members.get_outstanding(data['id'])
 
-    return json.dumps({"text": "Successful"}), 201
+    if debt[0] == 0:
+        rentals = Rentals()
+        all_rents = rentals.get_rented(data['id'])
+
+        for r in all_rents:
+            if r[0] == 0:
+                status = False
+                break
+    else:
+        status = False
+
+    if status:
+        members.remove_member(data['id'])
+        response = json.dumps({"text": "Successful"}), 201
+    else:
+        response = json.dumps({"text": "Unsuccessful"}), 404
+
+    members.close()
+    rentals.close()
+
+    return response
 
 @members_view.route('/get_members', methods=['GET'])
 def get_members():

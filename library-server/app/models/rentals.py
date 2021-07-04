@@ -81,7 +81,18 @@ class Rentals:
         checks if a user has already rented the book with bookID
         return: returned status of a book
         """
-        query = f"""SELECT returned from {TABLE} WHERE memberID = '{memberID}' AND bookID ='{bookID}';"""
+        query = f"""SELECT returned FROM {TABLE} WHERE memberID = '{memberID}' AND bookID ='{bookID}';"""
+        self.cursor.execute(query)
+        res = self.cursor.fetchall()
+
+        return res
+
+    def get_rented(self, memberID):
+        """
+        return: all rented books by a member
+        """
+        query = f"""SELECT returned FROM {TABLE} WHERE memberID = '{memberID}';"""
+
         self.cursor.execute(query)
         res = self.cursor.fetchall()
 

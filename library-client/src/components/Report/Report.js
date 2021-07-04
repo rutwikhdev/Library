@@ -7,6 +7,7 @@ import download from 'downloadjs';
 
 import Chart from './Chart/Chart';
 import classes from './Report.module.css';
+import styles from '../Rent/Rent.module.css';
 
 const Report = () => {
     const [reports, setReports] = useState({ most_rented: [], most_paid: [], monthly: [] });
@@ -84,7 +85,7 @@ const Report = () => {
 
     return (
         <React.Fragment>
-            <button onClick={downloadReports}>Download</button>
+            <button className={styles.btn} onClick={downloadReports}>Download</button>
             <div id="capture">
                 <p className={classes.title}>Top 10 books.</p>
                 <table>

@@ -30,14 +30,14 @@ def rent_book():
     if books.is_in_stock(data['bookID']):
         # do this stuff only if the book is in stock.
         res = member.get_outstanding(data['memberID'])
+
+        # check if the book already exists
         ex_list = rental.check_existing(data['memberID'], data['bookID'])
         existing = False
 
         for r in ex_list:
-            # _, _, i, _ = r
-            i = r
 
-            if i == 0:
+            if r[0] == 0:
                 existing = True
             else:
                 existing = False

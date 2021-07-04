@@ -4,26 +4,23 @@ import classes from './Member.module.css';
 
 const Member = (props) => {
     const deleteMemberHandler = async () => {
-        if (props.data.debt > 0) {
-            alert('Clear outstanding first');
-            return
-        }
-        
+
         // remove member from database
         await axios.post('http://localhost:5000/remove_member', {
             id: props.data.id
         }).then(res => {
+            // remove member from state
             console.log(res);
+            const newMembers = props.stateRef.filter(el => {
+                return el.id !== props.data.id;
+            })
+
+            props.stateCallback(newMembers)
+
         }).catch(err => {
             console.log(err);
+            alert('Unsuccessful: Clear outstanding or return books Error.')
         });
-
-        // remove member from state
-        const newMembers = props.stateRef.filter(el => {
-            return el.id !== props.data.id;
-        })
-
-        props.stateCallback(newMembers)
     }
 
     return (
