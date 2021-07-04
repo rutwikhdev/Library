@@ -15,6 +15,7 @@ const Members = () => {
         setName(e.target.value);
     }
 
+    // add member to database
     const addMemberHandler = async () => {
         await axios.post('http://localhost:5000/add_member', {
             name: name
@@ -25,6 +26,7 @@ const Members = () => {
         });
     }
 
+    // get members from database
     const fetchMembers = async () => {
         const res = await axios.get('http://localhost:5000/get_members');
         setMembers(res.data);
@@ -36,7 +38,7 @@ const Members = () => {
 
     var renderMembers = (
         <tr className={classes.members}>
-            
+
         </tr>);
     if (Object.keys(members).length > 0) {
 

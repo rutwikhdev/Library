@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 
 import styles from './PortModal.module.css';
 
+// This component is ported to sit next to "root" div.
 const Backdrop = props => {
     return <div className={styles.backdrop} onClick={props.backdropClick} />;
 }

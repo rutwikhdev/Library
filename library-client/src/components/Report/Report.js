@@ -7,6 +7,7 @@ import classes from './Report.module.css';
 const Report = () => {
     const [reports, setReports] = useState({ most_rented: [], most_paid: [], monthly: [] });
 
+    // get all report data
     const getReports = async () => {
         await axios.get('http://localhost:5000/get_reports').then(res => {
             console.log(res);

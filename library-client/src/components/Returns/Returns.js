@@ -7,6 +7,7 @@ import styles from './Returns.module.css';
 const Returns = () => {
     const [rentalData, setRentalData] = useState([]);
 
+    // get all rental records
     const getRentalsData = async () => {
         await axios.get('http://localhost:5000/get_rentals').then(res => {
             console.log(res);
@@ -16,14 +17,15 @@ const Returns = () => {
         })
     }
 
+    // handle book return
     const returnHandler = async (memId, bId, i) => {
         await axios.post('http://localhost:5000/return_book', {
             memberID: memId,
             bookID: bId
         }).then(res => {
-            console.log(res);
             let newRentals = [...rentalData]
             newRentals[i].rental_status = true
+
             setRentalData(newRentals)
         }).catch(err => {
             console.log(err);
@@ -31,23 +33,23 @@ const Returns = () => {
     };
 
     var rentals = <tr></tr>
-    if (Object.keys(rentalData).length > 0) {
+        if (Object.keys(rentalData).length > 0) {
 
-        rentals = Object.values(rentalData).map((el, i) => {
-            return (
-                <tr>
-                    <td>{el.memberID}</td>
-                    <td>{el.bookID}</td>
-                    <td>{el.rental_status ? 'Returned' : 'Not Returned'}</td>
-                    <td>{el.date}</td>
-                    {el.rental_status ?
-                        <td className={styles.disabledBtn}>Returned</td> :
-                        <td className={styles.returnBtn} onClick={() => returnHandler(el.memberID, el.bookID, i)}>Return</td>
-                    }
-                </tr>
-            );
-        });
-    }
+            rentals = Object.values(rentalData).map((el, i) => {
+                return (
+                    <tr>
+                        <td>{el.memberID}</td>
+                        <td>{el.bookID}</td>
+                        <td>{el.rental_status ? 'Returned' : 'Not Returned'}</td>
+                        <td>{el.date}</td>
+                        {el.rental_status ?
+                            <td className={styles.disabledBtn}>Returned</td> :
+                            <td className={styles.returnBtn} onClick={() => returnHandler(el.memberID, el.bookID, i)}>Return</td>
+                        }
+                    </tr>
+                );
+            });
+        }
 
     useEffect(() => {
         getRentalsData();

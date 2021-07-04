@@ -26,6 +26,7 @@ const Transaction = () => {
         setAmount(e.target.value);
     }
 
+    // make transaction
     const transactionHandler = async () => {
         await axios.post('http://localhost:5000/make_transaction', {
             memberID: memberId,
@@ -40,6 +41,7 @@ const Transaction = () => {
 
     }
 
+    // get all transactions
     const getTransactions = async () => {
         await axios.get('http://localhost:5000/get_transactions').then( res => {
             console.log(res);
@@ -50,21 +52,21 @@ const Transaction = () => {
     }
 
     var transactionsList = <tr></tr>
-    if (Object.keys(transactions).length > 0) {
+        if (Object.keys(transactions).length > 0) {
 
-        transactionsList = Object.values(transactions).map(el => {
-            return (
-                <tr>
-                    <td>{el.memberID}</td>
-                    <td>{el.memberName}</td>
-                    <td>{el.amount}</td>
-                    <td>{el.date}</td>
-                    <td>{el.time}</td>
-                    <td>{el.status}</td>
-                </tr>
-            );
-        });
-    }
+            transactionsList = Object.values(transactions).map(el => {
+                return (
+                    <tr>
+                        <td>{el.memberID}</td>
+                        <td>{el.memberName}</td>
+                        <td>{el.amount}</td>
+                        <td>{el.date}</td>
+                        <td>{el.time}</td>
+                        <td>{el.status}</td>
+                    </tr>
+                );
+            });
+        }
 
     useEffect(() => {
         getTransactions();

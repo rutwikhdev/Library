@@ -22,6 +22,7 @@ const Book = (props) => {
         setModal(false)
     }
 
+    // Import books to library
     const addToLibraryHandler = async () => {
         await axios.post('http://localhost:5000/add_library',
             props.data
@@ -34,6 +35,7 @@ const Book = (props) => {
         });
     }
 
+    // Try renting a book for member
     const rentBookHandler = async () => {
         await axios.post('http://localhost:5000/rent_book', {
             bookID: props.data.bookID,
