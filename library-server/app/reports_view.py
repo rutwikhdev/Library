@@ -64,6 +64,6 @@ def get_reports():
     paid = sorted(paid, key=lambda x: x['amount'], reverse=True)
     monthly = monthly_analysis.values()
 
-    data = {'most_rented': rented, 'most_paid': paid, 'monthly': list(monthly)}
+    data = {'most_rented': rented[:5], 'most_paid': paid, 'monthly': list(monthly)}
 
     return json.dumps(data), 200

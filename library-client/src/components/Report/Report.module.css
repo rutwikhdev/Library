@@ -1,3 +1,9 @@
+#capture {
+    width: 210mm;
+    height: fit-content;
+    margin: auto
+}
+
 .tableHeaders {
     color: var(--frostSkyBlue);
     background-color: var(--secondaryColor);
@@ -11,4 +17,10 @@
     text-align: center;
     font-size: 26px;
     color: var(--mainColor)
+}
+
+table {
+    margin: 0px;
+    width: 210mm;
+    height: fit-content;
 }
