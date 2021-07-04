@@ -8,6 +8,7 @@ class Transactions:
     def __init__(self):
         """
         try to connect to file and create cursor
+        return: None
         """
         self.conn = None
         try:
@@ -21,12 +22,14 @@ class Transactions:
     def close(self):
         """
         close the db connection
+        return: None
         """
         self.conn.close()
 
     def _create_table(self):
         """
         create new database table if one doesn't exist
+        return: None
         """
         query = f"""CREATE TABLE IF NOT EXISTS {TABLE}(
                     member_Id INT,
@@ -36,16 +39,17 @@ class Transactions:
                     time datetime NOT NULL,
                     status VARCHAR(20) NOT NULL DEFAULT 'Completed'
                 );"""
-        
+
         self.cursor.execute(query)
         self.conn.commit()
 
     def make_transaction(self, memberId, amount, memberName):
         """
         complete a transaction.
+        return: None
         """
         query = f"""INSERT INTO {TABLE}(member_Id, memberName, amount, date, time) VALUES('{memberId}', '{memberName}', '{amount}', date(), time());"""
-        
+
         try:
             self.cursor.execute(query)
             self.conn.commit()
@@ -54,7 +58,7 @@ class Transactions:
 
     def get_transactions(self):
         """
-        returns all transaction details.
+        return: all transaction details.
         """
         query = f"""SELECT * from {TABLE};"""
 

@@ -17,6 +17,7 @@ def rent_book():
     2. Check current outstanding.(if > cur+50>500, cancel request)
     3. Check if the member has already rented the book with bookID and not returned
     4. Add to rental record, manage quantity of books.
+    return: status
     """
     data = json.loads(request.data)
 
@@ -62,7 +63,7 @@ def rent_book():
 @rentals_view.route('/get_rentals', methods=['GET'])
 def get_rentals():
     """
-    returns the rental data
+    return: complete rental data
     """
     rentals = Rentals()
     res = rentals.get_rentals()
@@ -84,6 +85,7 @@ def get_rentals():
 def return_book():
     """
     accepts book return back to library.
+    return: status
     """
     data = json.loads(request.data)
 

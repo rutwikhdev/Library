@@ -65,7 +65,7 @@ def search_local():
 def add_library():
     """
     adds books to local db
-    return: None
+    return: status
     """
     data = json.loads(request.data)
 

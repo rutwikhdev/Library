@@ -13,6 +13,7 @@ CORS(members_view)
 def add_member():
     """
     CREATE a member in db
+    return: status
     """
     data = json.loads(request.data)
     random_id = uuid.uuid4().hex[:6]
@@ -27,6 +28,7 @@ def add_member():
 def remove_member():
     """
     DELETE a member from db
+    return: status
     """
     data = json.loads(request.data)
 
@@ -39,7 +41,7 @@ def remove_member():
 @members_view.route('/get_members', methods=['GET'])
 def get_members():
     """
-    returns a list of all the members in db
+    returns: list containing all the members in db
     """
     members = Members()
     result = members.get_members()

@@ -12,7 +12,7 @@ reports_view = Blueprint('reports', __name__)
 @reports_view.route('/get_reports', methods=['GET'])
 def get_reports():
     """
-    returns a curated report json object.
+    return: curated report(json) object.
     """
     rentals = Rentals()
     transacts = Transactions()

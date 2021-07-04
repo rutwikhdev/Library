@@ -9,7 +9,7 @@ import config
 
 
 app = Flask(__name__)
-app.config['SECRET_KEY'] = config.Config.SERVER
+app.config['SECRET_KEY'] = config.Config.SECRET_KEY
 app.config['CORS_HEADERS'] = 'Content-Type'
 CORS(app)
 

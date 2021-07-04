@@ -8,6 +8,7 @@ class Members:
     def __init__(self):
         """
         try to connect to file and create cursor
+        return: None
         """
         self.conn = None
         try:
@@ -21,12 +22,14 @@ class Members:
     def close(self):
         """
         close the db connection
+        return: None
         """
         self.conn.close()
 
     def _create_table(self):
         """
         create new database table if one doesn't exist
+        return: None
         """
         query = f"""CREATE TABLE IF NOT EXISTS {TABLE}(
                     id INT UNIQUE NOT NULL,
@@ -39,7 +42,7 @@ class Members:
 
     def get_members(self):
         """
-        returns all members data
+        return: list containing all members data
         """
         query = f"""SELECT * FROM {TABLE};"""
         self.cursor.execute(query)
@@ -50,6 +53,7 @@ class Members:
     def add_member(self, some_id, name):
         """
         add a new member to database
+        return: None
         """
         query = f"""INSERT INTO {TABLE}(id, name) values(
                     '{some_id}',
@@ -65,6 +69,7 @@ class Members:
     def remove_member(self, memberID):
         """
         removes a member: only if he has paid all debts
+        return: None
         """
         query = f"""DELETE FROM {TABLE} WHERE id = '{memberID}';"""
 
@@ -77,6 +82,7 @@ class Members:
     def get_outstanding(self, memberID):
         """
         returns the current outstanding balance for memberID
+        return: total debt of member
         """
         query = f"""SELECT to_pay FROM {TABLE} WHERE id = '{memberID}';"""
         self.cursor.execute(query)
@@ -87,6 +93,7 @@ class Members:
     def add_outstanding(self, memberID):
         """
         adds to outstanding balance indicating that member has rented a book.
+        return: None
         """
         query = f"""UPDATE {TABLE} SET to_pay = to_pay + 50 WHERE id = '{memberID}';"""
 
@@ -100,6 +107,7 @@ class Members:
     def deduct_outstanding(self, memberID, amount):
         """
         adds to outstanding balance indicating that member has returned a book.
+        return: None
         """
         query = f"""UPDATE {TABLE} SET to_pay = to_pay - {amount} WHERE id = '{memberID}';"""
 

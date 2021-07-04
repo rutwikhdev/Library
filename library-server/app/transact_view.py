@@ -11,7 +11,7 @@ CORS(transact_view)
 @transact_view.route('/get_transactions', methods=['GET'])
 def get_transactions():
     """
-    returns all transaction details.
+    return: all transaction details.
     """
     transact = Transactions()
     res = transact.get_transactions()
@@ -32,6 +32,7 @@ def make_transaction():
     """
     1. handle user payment checking for negative transactions.
     2. handle total outstanding.
+    return: status
     """
     data = json.loads(request.data)
 

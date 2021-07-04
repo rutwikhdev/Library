@@ -21,14 +21,14 @@ class Books:
     def close(self):
         """
         close the db connection
-        :return None
+        return: None
         """
         self.conn.close()
 
     def _create_table(self):
         """
         create new database table if one doesn't exist
-        :return None
+        return: None
         """
         query = f"""CREATE TABLE IF NOT EXISTS {TABLE}(
                     bookID VARCHAR(50) UNIQUE NOT NULL,
@@ -53,6 +53,7 @@ class Books:
         """
         1. adds a record to local db if not present. i.e. for the first time
         2. if the record already exists then increase quantity
+        return: None
         """
         exists = self.check_if_exists(data['isbn'])
 
@@ -82,6 +83,7 @@ class Books:
     def search_book(self, data):
         """
         searches for a book in db by author name or title.
+        return: list of books that match the search query
         """
         query = f"""SELECT * from {TABLE} where "{data['type']}" LIKE "%{data['text']}%";"""
 
@@ -93,6 +95,7 @@ class Books:
     def check_if_exists(self, bookID):
         """
         check if book already exists in local db.
+        return: Boolean
         """
         query = f"""SELECT * from {TABLE} WHERE bookID = '{bookID}';"""
         res = self.cursor.execute(query)
@@ -106,6 +109,7 @@ class Books:
     def is_in_stock(self, bookID):
         """
         checks if the book is in stock(queries quantity)
+        return: Boolean
         """
         query = f"""SELECT quantity from {TABLE} where bookID = '{bookID}';"""
         self.cursor.execute(query)
@@ -120,6 +124,7 @@ class Books:
     def rent_book(self, bookID):
         """
         manages quantity of book
+        return: None
         """
         query = f"""UPDATE {TABLE} set quantity = quantity - 1 where bookID = '{bookID}';"""
 
@@ -132,6 +137,7 @@ class Books:
     def return_book(self, bookID):
         """
         manages quantity of book: can be merged with above function
+        return: None
         """
         query = f"""UPDATE {TABLE} set quantity = quantity + 1 where bookID = '{bookID}';"""
 
@@ -143,7 +149,7 @@ class Books:
 
     def get_one_book(self, bookID):
         """
-        returns data for a single book.
+        return: data for a single book.
         """
         query = f"""SELECT * FROM {TABLE} WHERE bookID = '{bookID}';"""
 

@@ -8,6 +8,7 @@ class Rentals:
     def __init__(self):
         """
         try to connect to file and create cursor
+        return: None
         """
         self.conn = None
         try:
@@ -21,12 +22,14 @@ class Rentals:
     def close(self):
         """
         close the db connection
+        return: None
         """
         self.conn.close()
 
     def _create_table(self):
         """
         create new database table if one doesn't exist
+        return: None
         """
         query = f"""CREATE TABLE IF NOT EXISTS {TABLE}(
                     memberID VARCHAR(20),
@@ -40,6 +43,7 @@ class Rentals:
     def rent_book(self, memberID, bookID):
         """
         adds a rent record
+        return: None
         """
         query = f"""INSERT INTO {TABLE}(memberID, bookID, date_time) VALUES('{memberID}', '{bookID}', date());"""
 
@@ -52,6 +56,7 @@ class Rentals:
     def return_book(self, memberID, bookID):
         """
         update the return status
+        return: None
         """
         query = f"""UPDATE {TABLE} set returned = TRUE WHERE bookID = '{bookID}' AND memberID = '{memberID}';"""
 
@@ -63,7 +68,7 @@ class Rentals:
 
     def get_rentals(self):
         """
-        returns all rental records.
+        return: list of all rental records.
         """
         query = f"""SELECT * FROM {TABLE};"""
         self.cursor.execute(query)
@@ -74,6 +79,7 @@ class Rentals:
     def check_existing(self, memberID, bookID):
         """
         checks if a user has already rented the book with bookID
+        return: returned status of a book
         """
         query = f"""SELECT returned from {TABLE} WHERE memberID = '{memberID}' AND bookID ='{bookID}';"""
         self.cursor.execute(query)
