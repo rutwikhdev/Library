@@ -11,6 +11,7 @@ const Transaction = () => {
     const [amount, setAmount] = useState();
     const [transactions, setTransactions] = useState([]);
 
+    // Input handlers
     const memberIdHandler = (e) => {
         e.preventDefault();
         setMemberId(e.target.value);
@@ -26,6 +27,7 @@ const Transaction = () => {
         setAmount(e.target.value);
     }
 
+    // Server calls
     // make transaction
     const transactionHandler = async () => {
         await axios.post('http://localhost:5000/make_transaction', {
@@ -51,6 +53,7 @@ const Transaction = () => {
         })
     }
 
+    // render transactions dynamically
     var transactionsList = <tr></tr>
         if (Object.keys(transactions).length > 0) {
 
@@ -76,27 +79,27 @@ const Transaction = () => {
         <React.Fragment>
             <form className={styles.transactionForm} onSubmit={transactionHandler}>
                 <input
-                    type="text"
+                    type='text'
                     value={memberId}
                     onChange={memberIdHandler}
                     className={classes.inputField}
-                    placeholder="Member ID"
+                    placeholder='Member ID'
                     required
                 />
                 <input
-                    type="text"
+                    type='text'
                     value={memberName}
                     onChange={memberNameHandler}
                     className={classes.inputField}
-                    placeholder="Member Name"
+                    placeholder='Member Name'
                     required
                 />
                 <input
-                    type="text"
+                    type='text'
                     value={amount}
                     onChange={amountHandler}
                     className={classes.inputField}
-                    placeholder="Amount"
+                    placeholder='Amount'
                     required
                 />
                 <button className={classes.btn}>Pay</button>

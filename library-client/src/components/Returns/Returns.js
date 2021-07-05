@@ -7,6 +7,7 @@ import styles from './Returns.module.css';
 const Returns = () => {
     const [rentalData, setRentalData] = useState([]);
 
+    // Server calls
     // get all rental records
     const getRentalsData = async () => {
         await axios.get('http://localhost:5000/get_rentals').then(res => {
@@ -32,6 +33,7 @@ const Returns = () => {
         })
     };
 
+    // show rentals dynamically
     var rentals = <tr></tr>
         if (Object.keys(rentalData).length > 0) {
 

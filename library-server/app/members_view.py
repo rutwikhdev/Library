@@ -23,7 +23,7 @@ def add_member():
     result = members.add_member(random_id, data['name'])
     members.close()
 
-    return json.dumps({"text": "Successful"}), 201
+    return json.dumps({'text': 'Successful'}), 201
 
 @members_view.route('/remove_member', methods=['POST'])
 def remove_member():
@@ -47,17 +47,17 @@ def remove_member():
             if r[0] == 0:
                 status = False
                 break
+        rentals.close()
     else:
         status = False
 
     if status:
         members.remove_member(data['id'])
-        response = json.dumps({"text": "Successful"}), 201
+        response = json.dumps({'text': 'Successful'}), 201
     else:
-        response = json.dumps({"text": "Unsuccessful"}), 404
+        response = json.dumps({'text': 'Unsuccessful'}), 404
 
     members.close()
-    rentals.close()
 
     return response
 
@@ -70,10 +70,10 @@ def get_members():
     result = members.get_members()
     members.close()
 
-    data = []
-    for r in result:
-        id, name, to_pay = r
-        rec = {'id': id, 'name': name, 'debt': to_pay}
-        data.append(rec)
+    data = [{
+        'id': r[0],
+        'name': r[1],
+        'debt': r[2]
+        } for r in result]
 
     return json.dumps(data), 200

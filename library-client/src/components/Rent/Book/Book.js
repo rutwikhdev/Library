@@ -9,6 +9,7 @@ const Book = (props) => {
     const [modal, setModal] = useState(false);
     const [memberId, setMemberId] = useState("");
 
+    // Input and Modal state Handlers
     const inputHandler = (e) => {
         e.preventDefault();
         setMemberId(e.target.value);
@@ -22,6 +23,7 @@ const Book = (props) => {
         setModal(false)
     }
 
+    // Server calls
     // Import books to library
     const addToLibraryHandler = async () => {
         await axios.post('http://localhost:5000/add_library',
@@ -35,19 +37,18 @@ const Book = (props) => {
         });
     }
 
-    // Try renting a book for member
+    // Try renting a book for member using modal
     const rentBookHandler = async () => {
         await axios.post('http://localhost:5000/rent_book', {
             bookID: props.data.bookID,
             memberID: memberId
         }).then(res => {
             console.log(res);
-            // reduce book quantity form state
+            alert('Successfully rented');
         }).catch(err => {
             console.log(err);
             alert('Outstanding balance too high or already rented.');
         })
-
         closeModalHandler();
     }
 

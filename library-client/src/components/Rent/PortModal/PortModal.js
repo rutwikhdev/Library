@@ -3,7 +3,8 @@ import ReactDOM from 'react-dom';
 
 import styles from './PortModal.module.css';
 
-// This component is ported to sit next to "root" div.
+// This component is ported to sit next to "root" div, so that it overlays complete page
+// Setting the transparent backdrop
 const Backdrop = props => {
     return <div className={styles.backdrop} onClick={props.backdropClick} />;
 }
@@ -21,7 +22,7 @@ const ModalOverlay = props => {
                     className={styles.input}
                     value={props.inputValue}
                     onChange={props.inputHandler}
-                    placeholder="Enter Member ID" />
+                    placeholder='Enter Member ID' />
             </div>
             <footer className={styles.actions}>
                 <button className={styles.button} onClick={props.onConfirm}>Rent Request</button>
@@ -30,6 +31,7 @@ const ModalOverlay = props => {
     );
 }
 
+// Port the modal beside "root"
 const PortModal = props => {
     return (
         <React.Fragment>

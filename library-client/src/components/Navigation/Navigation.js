@@ -7,12 +7,15 @@ import Returns from '../Returns/Returns';
 import Transaction from '../Transaction/Transaction';
 import Report from '../Report/Report';
 
+import Logo from '../../assets/logo.png';
+
 import classes from './Navigation.module.css';
 
 const Navigation = () => {
     return (
         <React.Fragment>
             <div className={classes.header}>
+                <img className={classes.logo} src={Logo} />
                 <nav className={classes.nav}>
                     <Link to="/rent" className={classes.links}>Rent</Link>
                     <Link to="/returns" className={classes.links}>Returns</Link>

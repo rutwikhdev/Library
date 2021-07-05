@@ -1,9 +1,10 @@
 import React from 'react';
 
-import { Pie, Bar, Line } from 'react-chartjs-2';
+import { Bar, Line } from 'react-chartjs-2';
 import classes from './Chart.module.css';
 
 const Chart = (props) => {
+    // Get colors from App.css -- root level
     var r = document.querySelector(':root');
     var rs = getComputedStyle(r);
 
@@ -13,6 +14,7 @@ const Chart = (props) => {
     const auroraGreen = rs.getPropertyValue('--auroraGreen');
     const auroraPink = rs.getPropertyValue('--auroraPink');
 
+    // options for charts
     const options = {
         scales: {
             yAxes: [{
@@ -49,7 +51,6 @@ const Chart = (props) => {
         labels: props.labels,
         datasets: [
             {
-                // label: props.labels,
                 data: props.data,
                 fill: false,
                 backgroundColor: [

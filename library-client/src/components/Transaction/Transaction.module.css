@@ -1,3 +1,8 @@
+.header {
+    display: flex;
+    flex-direction: column;
+}
+
 .transactionForm {
     display: flex;
     justify-content: center;
@@ -11,4 +16,11 @@
 .transactionForm input {
     margin: 0px 10px;
     width: 120px;
+}
+
+.logo {
+    float: left;
+    height: 25px;
+    width: 25px;
+    background: blue;
 }

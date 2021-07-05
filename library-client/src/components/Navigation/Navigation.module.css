@@ -1,18 +1,24 @@
 .header {
-    position: absolute;
+    position: fixed;
     top: 0;
+    z-index: 100;
     width: 100vw;
     background-color: var(--mainColor);
     height: 75px;
 }
 
+.logo {
+    position: absolute;
+    height: 50px;
+    width: 50px;
+    margin: 10px 0px 0px 20px;
+}
+
 .render_bottom {
     position: absolute;
-    top: 10%;
     left: 50%;
     transform: translate(-50%);
-    margin: 0px auto;
-    /* text-align: center; */
+    margin: 95px auto;
 }
 
 .nav {

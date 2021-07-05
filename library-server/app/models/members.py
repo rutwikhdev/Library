@@ -1,30 +1,14 @@
 import sqlite3
 from sqlite3 import Error
 
+from .init_db import Connection
 FILE = 'library.db'
 TABLE = 'Members'
 
-class Members:
+class Members(Connection):
     def __init__(self):
-        """
-        try to connect to file and create cursor
-        return: None
-        """
-        self.conn = None
-        try:
-            self.conn = sqlite3.connect(FILE)
-        except Error as e:
-            print(e)
-
-        self.cursor = self.conn.cursor()
+        Connection.__init__(self, FILE)
         self._create_table()
-
-    def close(self):
-        """
-        close the db connection
-        return: None
-        """
-        self.conn.close()
 
     def _create_table(self):
         """

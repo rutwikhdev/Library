@@ -10,6 +10,7 @@ import styles from '../Rent/Rent.module.css';
 const Report = () => {
     const [reports, setReports] = useState({ most_rented: [], most_paid: [], monthly: [] });
 
+    // Server calls
     // get all report data
     const getReports = async () => {
         await axios.get('http://localhost:5000/get_reports').then(res => {
@@ -29,10 +30,11 @@ const Report = () => {
                 const pdf = new jsPDF();
 
                 pdf.addImage(dataUrl, 'JPEG', 30, 0, 150, 300) // x, y, width, height
-                pdf.save("reports.pdf");
+                pdf.save('reports.pdf');
             });
     }
 
+    // Add data to display to lists
     var rented_labels = Object.values(reports.most_rented).map(el => {
         return el.authors;
     });
@@ -57,6 +59,7 @@ const Report = () => {
         return el.amount;
     });
 
+    // render top books dynamically
     var renderedBookReports = <tr></tr>;
     if (Object.keys(reports.most_rented).length > 0) {
 
@@ -78,7 +81,7 @@ const Report = () => {
     return (
         <React.Fragment>
             <button className={styles.btn} onClick={downloadReports}>Download</button>
-            <div id="capture">
+            <div id='capture'>
                 <p className={classes.title}>Top 10 books.</p>
                 <table>
                     <tr>
@@ -92,7 +95,6 @@ const Report = () => {
                 <Chart title={'Top Authors'} labels={rented_labels.slice(0,5)} data={rented_data.slice(0,5)} type={'line'} />
                 <Chart title={'Highest Paying Customers'} labels={member_labels} data={amount_data} type={'bar'} />
                 <Chart title={'Highest Payment Months'} labels={monthly_paid_labels} data={monthly_paid_data} type={'bar'} />
-                <div></div>
             </div>
         </React.Fragment>
     );

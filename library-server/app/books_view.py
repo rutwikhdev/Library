@@ -11,8 +11,7 @@ CORS(books_view)
 
 @books_view.route('/')
 def home():
-    return "<h1>Home Page</h1>"
-
+    return '<h1>Home Page</h1>'
 
 @books_view.route('/search_api', methods=['POST'])
 def search_api():
@@ -26,8 +25,12 @@ def search_api():
     url = f"https://frappe.io/api/method/frappe-library?{enc}"
     res = requests.get(url)
 
-    return json.dumps(json.loads(res.text)['message'])
+    if res:
+        response = json.dumps(json.loads(res.text)['message']), 200
+    else:
+        response = json.dumps([]), 404
 
+    return response
 
 @books_view.route('/search_local', methods=['POST'])
 def search_local():
@@ -73,4 +76,4 @@ def add_library():
     books.add_book(data)
     books.close()
 
-    return json.dumps({"text":"Successful"}), 200
+    return json.dumps({'text': 'Successful'}), 200

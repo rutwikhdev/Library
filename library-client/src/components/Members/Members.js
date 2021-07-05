@@ -10,11 +10,13 @@ const Members = () => {
     const [name, setName] = useState("");
     const [members, setMembers] = useState([]);
 
+    // Input Handlers
     const nameChangeHandler = (e) => {
         e.preventDefault();
         setName(e.target.value);
     }
 
+    // Server calls
     // add member to database
     const addMemberHandler = async () => {
         await axios.post('http://localhost:5000/add_member', {
@@ -36,10 +38,7 @@ const Members = () => {
         fetchMembers();
     }, []);
 
-    var renderMembers = (
-        <tr className={classes.members}>
-
-        </tr>);
+    var renderMembers = <tr className={classes.members}></tr>;
     if (Object.keys(members).length > 0) {
 
         renderMembers = Object.values(members).map(el => {
@@ -56,11 +55,11 @@ const Members = () => {
         <React.Fragment>
             <form onSubmit={addMemberHandler} className={classes.memberForm}>
                 <input
-                    type="text"
+                    type='text'
                     value={name}
                     onChange={nameChangeHandler}
                     className={classes2.inputField}
-                    placeholder="Enter member name"
+                    placeholder='Enter member name'
                     required
                 />
                 <button className={classes2.btn}>Add Member</button>

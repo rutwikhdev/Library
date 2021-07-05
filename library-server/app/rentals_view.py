@@ -25,7 +25,7 @@ def rent_book():
     rental = Rentals()
     books = Books()
 
-    response = json.dumps({"text": "Unsuccessful"}), 400
+    response = json.dumps({'text': 'Unsuccessful'}), 400
 
     if books.is_in_stock(data['bookID']):
         # do this stuff only if the book is in stock.
@@ -52,7 +52,7 @@ def rent_book():
                 # add a rental record
                 rental.rent_book(data['memberID'], data['bookID'])
 
-                response = json.dumps({"text": "Successful"}), 200
+                response = json.dumps({'text': 'Successful'}), 200
 
     books.close()
     member.close()
@@ -69,15 +69,12 @@ def get_rentals():
     res = rentals.get_rentals()
     rentals.close()
 
-    rentalArr = []
-    for r in res:
-        memID, bookID, rental_status, date = r
-        rentalArr.append({
-            'memberID': memID,
-            'bookID': bookID,
-            'rental_status': True if rental_status == 1 else False,
-            'date': date
-        })
+    rentalArr = [{
+        'memberID': r[0],
+        'bookID': r[1],
+        'rental_status': True if r[2] == 1 else False,
+        'date': r[3]
+    } for r in res]
 
     return json.dumps(rentalArr), 200
 

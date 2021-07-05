@@ -3,9 +3,10 @@ import axios from 'axios';
 import classes from './Member.module.css';
 
 const Member = (props) => {
-    const deleteMemberHandler = async () => {
 
-        // remove member from database
+    // Server calls
+    // remove member from database
+    const deleteMemberHandler = async () => {
         await axios.post('http://localhost:5000/remove_member', {
             id: props.data.id
         }).then(res => {

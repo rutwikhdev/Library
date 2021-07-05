@@ -11,6 +11,7 @@ const Rent = () => {
     const [btnText, setBtnText] = useState("");
     const [books, setBooks] = useState([]);
 
+    // Input handlers
     const searchTextHandler = (e) => {
         e.preventDefault();
         setSearchText(e.target.value);
@@ -25,6 +26,8 @@ const Rent = () => {
         setBooks([]);
     }
 
+    // Server calls
+    // Search book in local db or api
     const searchBook = async (e) => {
         e.preventDefault();
         await axios.post(`http://localhost:5000/search_${searchPlace}`, {
@@ -39,6 +42,7 @@ const Rent = () => {
         });
     }
 
+    // Render books dynamically
     var searchedBooks = <div className={classes.results}>No results.</div>;
     if (Object.keys(books).length > 0) {
 
@@ -58,11 +62,11 @@ const Rent = () => {
             <form onSubmit={searchBook} className={classes.search_form}>
                 <div>
                     <input
-                        type="text"
+                        type='text'
                         value={searchText}
                         onChange={searchTextHandler}
                         className={classes.inputField}
-                        placeholder="Enter author name or title"
+                        placeholder='Enter author name or title'
                         required
                     />
                     <div className={classes.radio_block}>
@@ -70,50 +74,50 @@ const Rent = () => {
                         <div className={classes.block_component}>
                             <div>
                                 <input
-                                    type="radio"
-                                    name="author_title"
-                                    id="author"
-                                    value="authors"
+                                    type='radio'
+                                    name='author_title'
+                                    id='author'
+                                    value='authors'
                                     onChange={searchTypeHandler}
                                     required
                                 />
-                                <label htmlFor="author">Author</label>
+                                <label htmlFor='author'>Author</label>
                             </div>
                             <div>
                                 <input
-                                    type="radio"
-                                    name="author_title"
-                                    id="title"
-                                    value="title"
+                                    type='radio'
+                                    name='author_title'
+                                    id='title'
+                                    value='title'
                                     onChange={searchTypeHandler}
                                     required
                                 />
-                                <label htmlFor="title">Title</label>
+                                <label htmlFor='title'>Title</label>
                             </div>
                         </div>
 
                         <div className={classes.block_component}>
                             <div>
                                 <input
-                                    type="radio"
-                                    name="local_api"
-                                    id="local"
-                                    value="local"
+                                    type='radio'
+                                    name='local_api'
+                                    id='local'
+                                    value='local'
                                     onChange={searchPlaceHandler}
                                     required
                                 />
-                                <label htmlFor="local">Local</label>
+                                <label htmlFor='local'>Local</label>
                             </div>
                             <div>
                                 <input
-                                    type="radio"
-                                    name="local_api"
-                                    id="master"
-                                    value="api"
+                                    type='radio'
+                                    name='local_api'
+                                    id='master'
+                                    value='api'
                                     onChange={searchPlaceHandler}
                                     required
                                 />
-                                <label htmlFor="master">Master(API)</label>
+                                <label htmlFor='master'>Master(API)</label>
                             </div>
                         </div>
 
