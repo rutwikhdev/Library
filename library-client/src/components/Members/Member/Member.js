@@ -20,7 +20,7 @@ const Member = (props) => {
 
         }).catch(err => {
             console.log(err);
-            alert('Unsuccessful: Clear outstanding or return books Error.')
+            alert('Error: Clear outstanding or return books.')
         });
     }
 

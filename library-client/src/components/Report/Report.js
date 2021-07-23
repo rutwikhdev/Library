@@ -82,12 +82,12 @@ const Report = () => {
         <React.Fragment>
             <button className={styles.btn} onClick={downloadReports}>Download</button>
             <div id='capture'>
-                <p className={classes.title}>Top 10 books.</p>
+                <p className={classes.title}>Popular books.</p>
                 <table>
                     <tr>
                         <td className={classes.tableHeaders}>No.</td>
                         <td className={classes.tableHeaders}>Book Name</td>
-                        <td className={classes.tableHeaders}>Times Rented</td>
+                        <td className={classes.tableHeaders}>Rented (x)times.</td>
                     </tr>
                     {renderedBookReports}
                 </table>

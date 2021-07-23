@@ -44,9 +44,10 @@ const Returns = () => {
                         <td>{el.bookID}</td>
                         <td>{el.rental_status ? 'Returned' : 'Not Returned'}</td>
                         <td>{el.date}</td>
-                        {el.rental_status ?
-                            <td className={styles.disabledBtn}>Returned</td> :
-                            <td className={styles.returnBtn} onClick={() => returnHandler(el.memberID, el.bookID, i)}>Return</td>
+                        {
+                            el.rental_status ?
+                                <td className={styles.disabledBtn}>Returned</td> :
+                                <td className={styles.returnBtn} onClick={() => returnHandler(el.memberID, el.bookID, i)}>Return</td>
                         }
                     </tr>
                 );

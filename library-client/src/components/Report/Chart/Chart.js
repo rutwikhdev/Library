@@ -67,8 +67,9 @@ const Chart = (props) => {
 
     return (
         <div className={classes.canvas}>
-            { props.type === 'line' ? <Bar data={data} options={options} /> :
-                <Line data={data} options={options} />}
+            {
+                props.type === 'line' ? <Bar data={data} options={options} /> :
+                    <Line data={data} options={options} />}
         </div>
     );
 }

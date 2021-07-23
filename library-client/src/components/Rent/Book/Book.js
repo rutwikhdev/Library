@@ -47,7 +47,7 @@ const Book = (props) => {
             alert('Successfully rented');
         }).catch(err => {
             console.log(err);
-            alert('Outstanding balance too high or already rented.');
+            alert('Error: Outstanding balance too high || Already rented || Incorrect memberID');
         })
         closeModalHandler();
     }
